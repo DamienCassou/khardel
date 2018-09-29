@@ -38,6 +38,9 @@
   "Path to the khard executable file."
   :type 'file)
 
+(defvar khardel--emails nil
+  "Cache a list of strings of the form \"Name <email>\".")
+
 (defun khardel--list-contacts ()
   "Return a map whose keys are names and values are contacts."
   (save-match-data
@@ -50,8 +53,8 @@
          do (map-put contacts (match-string 2) (cons (match-string 1) (match-string 2)))
          finally return contacts)))))
 
-(defun khardel--list-emails ()
-  "Return a list of strings of the form \"Name <email>\"."
+(defun khardel--fetch-emails ()
+  "Return a list of strings of the form \"Name <email>\" by asking `khardel-command'."
   (save-match-data
     (with-temp-buffer
       (call-process khardel-command nil t nil "email" "--parsable" "--remove-first-line")
@@ -59,6 +62,17 @@
       (cl-loop
        while (re-search-forward "^\\([^\t\n]*\\)\t\\([^\t\n]*\\)\t.*$" nil t)
        collect (format "%s <%s>" (match-string 2) (match-string 1))))))
+
+(defun khardel--list-emails ()
+  "Return a list of strings of the form \"Name <email>\"."
+  (if khardel--emails
+      khardel--emails
+    (setq khardel--emails (khardel--fetch-emails))))
+
+(defun khardel-flush-caches ()
+  "Delete cached data to force a refresh."
+  (interactive)
+  (setq khardel--emails nil))
 
 (defun khardel-choose-contact ()
   "Let the user select a contact from a list of all contacts.
