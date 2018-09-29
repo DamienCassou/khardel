@@ -1,0 +1,34 @@
+* khardel
+
+  #+BEGIN_HTML
+      <p>
+        <a href="https://stable.melpa.org/#/khardel">
+          <img alt="MELPA Stable" src="https://stable.melpa.org/packages/khardel-badge.svg"/>
+        </a>
+
+        <a href="https://melpa.org/#/khardel">
+          <img alt="MELPA" src="https://melpa.org/packages/khardel-badge.svg"/>
+        </a>
+
+        <a href="https://gitlab.petton.fr/DamienCassou/khardel/commits/master">
+          <img alt="pipeline status" src="https://gitlab.petton.fr/DamienCassou/khardel/badges/master/pipeline.svg" />
+        </a>
+      </p>
+  #+END_HTML
+
+
+** Summary
+
+The package khardel 
+
+** License
+
+See [[file:COPYING][COPYING]]. Copyright (c) 2018 Damien Cassou.
+
+  #+BEGIN_HTML
+  <a href="https://liberapay.com/DamienCassou/donate">
+    <img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg">
+  </a>
+  #+END_HTML
+
+#  LocalWords:
