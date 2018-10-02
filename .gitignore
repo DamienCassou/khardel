@@ -1,4 +1,1 @@
-
-/emake.el
-/emake.mk
-.elpa.test
+/makel.mk
