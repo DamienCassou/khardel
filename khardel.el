@@ -85,7 +85,8 @@ Return the contact."
     (map-elt contacts contact-name)))
 
 (defvar-local khardel-edit-contact nil
-  "Store the contact associated with current buffer.")
+  "Store the contact associated with current buffer.
+If nil, the buffer represents a new contact.")
 
 ;;;###autoload
 (defun khardel-edit-contact (contact)
@@ -96,6 +97,19 @@ Return the contact."
       (call-process "khard" nil t nil "export" "--uid" (car contact))
       (khardel-edit-mode)
       (setq-local khardel-edit-contact contact))
+    (switch-to-buffer buffer)
+    (message "Press %s to save the contact and close the buffer."
+             (substitute-command-keys "\\[khardel-edit-finish]"))))
+
+;;;###autoload
+(defun khardel-new-contact ()
+  "Open an editor to creat a new CONTACT."
+  (interactive)
+  (let ((buffer (generate-new-buffer "*khardel<new>*")))
+    (with-current-buffer buffer
+      (call-process "khard" nil t nil "export" "--empty-contact-template")
+      (khardel-edit-mode)
+      (setq-local khardel-edit-contact nil))
     (switch-to-buffer buffer)
     (message "Press %s to save the contact and close the buffer."
              (substitute-command-keys "\\[khardel-edit-finish]"))))
@@ -112,16 +126,21 @@ Return the contact."
 (defun khardel-edit-finish ()
   "Save contact in current buffer with khard."
   (interactive)
-  (let ((filename (make-temp-file "khard")))
+  (let* ((filename (make-temp-file "khard"))
+         (args (if khardel-edit-contact
+                   `("modify"
+                     "--uid" ,(car khardel-edit-contact)
+                     "--input-file" ,filename)
+                 `("new"
+                   "--input-file" ,filename))))
     (write-region (point-min) (point-max) filename)
-    (when (equal 0 (call-process-region
+    (when (equal 0 (apply
+                    #'call-process-region
                     "y\n" ;; ⇐ khard asks for confirmation
                     nil
                     "khard"
                     nil t nil
-                    "modify"
-                    "--input-file" filename
-                    "--uid" (car khardel-edit-contact)))
+                    args))
       (kill-buffer))))
 
 ;;;###autoload
