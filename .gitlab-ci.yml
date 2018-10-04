@@ -1,11 +1,9 @@
-image: ubuntu:latest
+image: silex/emacs:26-dev
 
-.test_job_template: &test_job_definition
-  script:
+test:
+  before_script:
     - emacs --version
+    - make makel-version
     - make ci-dependencies
+  script:
     - make check
-
-test:emacs:26:
-  image: silex/emacs:26-dev
-  <<: *test_job_definition
