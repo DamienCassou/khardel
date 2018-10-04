@@ -14,8 +14,8 @@ makel.mk:
 		curl \
 		--fail --silent --show-error --insecure --location \
 		--retry 9 --retry-delay 9 \
-		-O https://gitlab.petton.fr/DamienCassou/makel/raw/v0.2.0/makel.mk; \
+		-O https://gitlab.petton.fr/DamienCassou/makel/raw/v0.4.0/makel.mk; \
 	fi
 
-# Include emake.mk if present
+# Include makel.mk if present
 -include makel.mk
