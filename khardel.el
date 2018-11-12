@@ -61,7 +61,7 @@
       (goto-char (point-min))
       (cl-loop
        while (re-search-forward "^\\([^\t\n]*\\)\t\\([^\t\n]*\\)\t.*$" nil t)
-       collect (format "%s <%s>" (match-string 2) (match-string 1))))))
+       collect (format "\"%s\" <%s>" (match-string 2) (match-string 1))))))
 
 (defun khardel--list-emails ()
   "Return a list of strings of the form \"Name <email>\"."
