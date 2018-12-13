@@ -95,6 +95,7 @@ If nil, the buffer represents a new contact.")
   (let ((buffer (generate-new-buffer (format "*khardel<%s>*" (cdr contact)))))
     (with-current-buffer buffer
       (call-process "khard" nil t nil "export" "--uid" (car contact))
+      (goto-char (point-min))
       (khardel-edit-mode)
       (setq-local khardel-edit-contact contact))
     (switch-to-buffer buffer)
