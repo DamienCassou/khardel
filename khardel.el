@@ -38,6 +38,10 @@
   "Path to the khard executable file."
   :type 'file)
 
+(defcustom khardel-edit-finished-hook nil
+  "Hook run when a contact edition is completed."
+  :type 'hook)
+
 (defvar khardel--emails nil
   "Cache a list of strings of the form \"Name <email>\".")
 
@@ -142,7 +146,8 @@ If nil, the buffer represents a new contact.")
                     "khard"
                     nil t nil
                     args))
-      (kill-buffer))))
+      (kill-buffer)
+      (run-hooks 'khardel-edit-finished-hook))))
 
 ;;;###autoload
 (defun khardel-insert-email ()
