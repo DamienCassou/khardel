@@ -53,7 +53,7 @@
       (goto-char (point-min))
       (let ((contacts (make-hash-table :test 'equal)))
         (cl-loop
-         while (re-search-forward "^\\([a-z0-9]*\\)\t\\(.*\\)\t[^\t]*$" nil t)
+         while (re-search-forward "^\\([-a-z0-9]*\\)\t\\(.*\\)\t[^\t]*$" nil t)
          do (map-put contacts (match-string 2) (cons (match-string 1) (match-string 2)))
          finally return contacts)))))
 
