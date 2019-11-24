@@ -1,9 +1,0 @@
-image: silex/emacs:26-dev
-
-test:
-  before_script:
-    - emacs --version
-    - make makel-version
-    - make ci-dependencies
-  script:
-    - make check
