@@ -42,6 +42,11 @@
   "Hook run when a contact edition is completed."
   :type 'hook)
 
+(defcustom khardel-vcard-version "3.0"
+  "Version of the vcard format used.
+This is passed to \"vcard new\".'"
+  :type 'string)
+
 (defvar khardel--emails nil
   "Cache a list of strings of the form \"Name <email>\".")
 
@@ -98,7 +103,7 @@ If nil, the buffer represents a new contact.")
   (interactive (list (khardel-choose-contact)))
   (let ((buffer (generate-new-buffer (format "*khardel<%s>*" (cdr contact)))))
     (with-current-buffer buffer
-      (call-process "khard" nil t nil "export" "--uid" (car contact))
+      (call-process "khard" nil t nil "show" "--format" "yaml" "--uid" (car contact))
       (goto-char (point-min))
       (khardel-edit-mode)
       (setq-local khardel-edit-contact contact))
@@ -112,7 +117,7 @@ If nil, the buffer represents a new contact.")
   (interactive)
   (let ((buffer (generate-new-buffer "*khardel<new>*")))
     (with-current-buffer buffer
-      (call-process "khard" nil t nil "export" "--empty-contact-template")
+      (call-process "khard" nil t nil "template")
       (khardel-edit-mode)
       (setq-local khardel-edit-contact nil))
     (switch-to-buffer buffer)
@@ -137,7 +142,8 @@ If nil, the buffer represents a new contact.")
                      "--uid" ,(car khardel-edit-contact)
                      "--input-file" ,filename)
                  `("new"
-                   "--input-file" ,filename))))
+                   "--input-file" ,filename
+                   "--vcard-version" ,khardel-vcard-version))))
     (write-region (point-min) (point-max) filename)
     (when (equal 0 (apply
                     #'call-process-region
