@@ -1,9 +1,16 @@
 kind: pipeline
 name: default
+
+platform:
+  os: linux
+  arch: arm
+
 steps:
 - name: check
   image: ubuntu:latest
   commands:
+  - apt-get update
+  - apt-get install -y software-properties-common coreutils make gnutls-bin curl
   - add-apt-repository ppa:kelleyk/emacs -y
   - apt-get update
   - apt-get install -y emacs26
