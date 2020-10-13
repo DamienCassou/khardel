@@ -3,7 +3,7 @@
 ;; Copyright (C) 2019  Nicolas Petton
 
 ;; Author: Nicolas Petton <nicolas@petton.fr>
-;; Url: https://gitlab.petton.fr/DamienCassou/khardel
+;; Url: https://github.com/DamienCassou/khardel
 ;; Package-requires: ((emacs "26.1"))
 ;; Version: 0.2.0
 
