@@ -1,6 +1,6 @@
 ;;; khardel-org.el --- Support for links to khard contact buffers in org  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2019  Nicolas Petton
+;; Copyright (C) 2019-2022  Nicolas Petton
 
 ;; Author: Nicolas Petton <nicolas@petton.fr>
 ;; Url: https://github.com/DamienCassou/khardel
