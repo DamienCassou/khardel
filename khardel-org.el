@@ -4,7 +4,7 @@
 
 ;; Author: Nicolas Petton <nicolas@petton.fr>
 ;; Url: https://github.com/DamienCassou/khardel
-;; Package-requires: ((emacs "26.1"))
+;; Package-requires: ((emacs "27.1"))
 ;; Version: 0.2.0
 
 ;; This program is free software; you can redistribute it and/or modify

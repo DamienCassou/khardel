@@ -4,7 +4,7 @@
 
 ;; Author: Damien Cassou <damien@cassou.me>
 ;; Url: https://github.com/DamienCassou/khardel
-;; Package-requires: ((emacs "25.1") (yaml-mode "0.0.13"))
+;; Package-requires: ((emacs "27.1") (yaml-mode "0.0.13"))
 ;; Version: 0.2.0
 
 ;; This program is free software; you can redistribute it and/or modify
