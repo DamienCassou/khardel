@@ -47,7 +47,7 @@ Return an `org-mode' link for the completed contact."
 (defun khardel-org--store-link ()
   "Store a link to a khard contact from a khard contact edit buffer."
   (when (eq major-mode 'khardel-edit-mode)
-    (org-store-link-props :type "khardel"
+    (org-link-store-props :type "khardel"
 			  :description (cdr khardel-edit-contact)
 			  :link (khardel-org--link khardel-edit-contact))))
 
