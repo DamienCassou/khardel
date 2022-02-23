@@ -1,10 +1,10 @@
 ;;; khardel.el --- Integrate with khard              -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2018  Damien Cassou
+;; Copyright (C) 2018-2022  Damien Cassou
 
 ;; Author: Damien Cassou <damien@cassou.me>
 ;; Url: https://github.com/DamienCassou/khardel
-;; Package-requires: ((emacs "25.1") (yaml-mode "0.0.13"))
+;; Package-requires: ((emacs "27.1") (yaml-mode "0.0.13"))
 ;; Version: 0.2.0
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -59,7 +59,7 @@ This is passed to \"vcard new\".'"
       (let ((contacts (make-hash-table :test 'equal)))
         (cl-loop
          while (re-search-forward "^\\([-a-z0-9]*\\)\t\\(.*\\)\t[^\t]*$" nil t)
-         do (map-put contacts (match-string 2) (cons (match-string 1) (match-string 2)))
+         do (setf (map-elt contacts (match-string 2)) (cons (match-string 1) (match-string 2)))
          finally return contacts)))))
 
 (defun khardel--fetch-emails ()
@@ -113,7 +113,7 @@ If nil, the buffer represents a new contact.")
 
 ;;;###autoload
 (defun khardel-new-contact ()
-  "Open an editor to creat a new CONTACT."
+  "Open an editor to create a new CONTACT."
   (interactive)
   (let ((buffer (generate-new-buffer "*khardel<new>*")))
     (with-current-buffer buffer
@@ -131,7 +131,7 @@ If nil, the buffer represents a new contact.")
   "Keymap for `khardel-edit-mode'.")
 
 (define-derived-mode khardel-edit-mode yaml-mode "Khardel"
-  "Edit a contact through a yaml representation.")
+  "Edit a contact through a YAML representation.")
 
 (defun khardel-edit-finish ()
   "Save contact in current buffer with khard."
@@ -166,3 +166,5 @@ If nil, the buffer represents a new contact.")
 
 (provide 'khardel)
 ;;; khardel.el ends here
+
+;;; LocalWords:  khard vcard

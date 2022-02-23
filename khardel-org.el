@@ -1,10 +1,10 @@
 ;;; khardel-org.el --- Support for links to khard contact buffers in org  -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2019  Nicolas Petton
+;; Copyright (C) 2019-2022  Nicolas Petton
 
 ;; Author: Nicolas Petton <nicolas@petton.fr>
 ;; Url: https://github.com/DamienCassou/khardel
-;; Package-requires: ((emacs "26.1"))
+;; Package-requires: ((emacs "27.1"))
 ;; Version: 0.2.0
 
 ;; This program is free software; you can redistribute it and/or modify
@@ -47,7 +47,7 @@ Return an `org-mode' link for the completed contact."
 (defun khardel-org--store-link ()
   "Store a link to a khard contact from a khard contact edit buffer."
   (when (eq major-mode 'khardel-edit-mode)
-    (org-store-link-props :type "khardel"
+    (org-link-store-props :type "khardel"
 			  :description (cdr khardel-edit-contact)
 			  :link (khardel-org--link khardel-edit-contact))))
 
@@ -62,3 +62,5 @@ Return an `org-mode' link for the completed contact."
 
 (provide 'khardel-org)
 ;;; khardel-org.el ends here
+
+;;; LocalWords:  khardel khard
