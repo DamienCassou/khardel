@@ -62,3 +62,5 @@ Return an `org-mode' link for the completed contact."
 
 (provide 'khardel-org)
 ;;; khardel-org.el ends here
+
+;;; LocalWords:  khardel khard

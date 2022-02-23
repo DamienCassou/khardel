@@ -166,3 +166,5 @@ If nil, the buffer represents a new contact.")
 
 (provide 'khardel)
 ;;; khardel.el ends here
+
+;;; LocalWords:  khard vcard
