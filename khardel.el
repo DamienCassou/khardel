@@ -113,7 +113,7 @@ If nil, the buffer represents a new contact.")
 
 ;;;###autoload
 (defun khardel-new-contact ()
-  "Open an editor to creat a new CONTACT."
+  "Open an editor to create a new CONTACT."
   (interactive)
   (let ((buffer (generate-new-buffer "*khardel<new>*")))
     (with-current-buffer buffer
@@ -131,7 +131,7 @@ If nil, the buffer represents a new contact.")
   "Keymap for `khardel-edit-mode'.")
 
 (define-derived-mode khardel-edit-mode yaml-mode "Khardel"
-  "Edit a contact through a yaml representation.")
+  "Edit a contact through a YAML representation.")
 
 (defun khardel-edit-finish ()
   "Save contact in current buffer with khard."
