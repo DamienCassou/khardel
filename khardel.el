@@ -1,6 +1,6 @@
 ;;; khardel.el --- Integrate with khard              -*- lexical-binding: t; -*-
 
-;; Copyright (C) 2018-2022  Damien Cassou
+;; Copyright (C) 2018-2023  Damien Cassoub
 
 ;; Author: Damien Cassou <damien@cassou.me>
 ;; Url: https://github.com/DamienCassou/khardel
