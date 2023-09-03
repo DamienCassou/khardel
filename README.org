@@ -10,8 +10,8 @@
           <img alt="MELPA" src="https://melpa.org/packages/khardel-badge.svg"/>
         </a>
 
-        <a href="https://gitlab.petton.fr/DamienCassou/khardel/commits/master">
-          <img alt="pipeline status" src="https://gitlab.petton.fr/DamienCassou/khardel/badges/master/pipeline.svg" />
+        <a href="https://github.com/DamienCassou/khardel/actions">
+          <img alt="pipeline status" src="https://github.com/DamienCassou/khardel/actions/workflows/test.yml/badge.svg" />
         </a>
       </p>
   #+END_HTML
@@ -19,7 +19,7 @@
 
 ** Summary
 
-The package khardel 
+The package khardel.
 
 ** License
 
