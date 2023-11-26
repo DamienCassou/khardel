@@ -103,7 +103,7 @@ If nil, the buffer represents a new contact.")
   (interactive (list (khardel-choose-contact)))
   (let ((buffer (generate-new-buffer (format "*khardel<%s>*" (cdr contact)))))
     (with-current-buffer buffer
-      (call-process "khard" nil t nil "show" "--format" "yaml" "--uid" (car contact))
+      (call-process "khard" nil t nil "show" "--format" "yaml" (format "uid:%s" (car contact)))
       (goto-char (point-min))
       (khardel-edit-mode)
       (setq-local khardel-edit-contact contact))
@@ -138,9 +138,9 @@ If nil, the buffer represents a new contact.")
   (interactive)
   (let* ((filename (make-temp-file "khard"))
          (args (if khardel-edit-contact
-                   `("modify"
-                     "--uid" ,(car khardel-edit-contact)
-                     "--input-file" ,filename)
+                   `("edit"
+                     "--input-file" ,filename
+                     ,(format "uid:%s" (car khardel-edit-contact)))
                  `("new"
                    "--input-file" ,filename
                    "--vcard-version" ,khardel-vcard-version))))
